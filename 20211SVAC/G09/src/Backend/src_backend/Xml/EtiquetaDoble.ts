@@ -4,11 +4,6 @@ import { Etiqueta } from "./Etiqueta"
 import { Fila } from "./Fila"
 import { Tabla } from "./Tabla"
 import { Tipos } from "./Tipos"
-import { ControlError } from "../Xpath/ControlError"
-import { NodoControlError } from "../Xpath/NodoControlError"
-import { NODATA } from "dns"
-
-import { TipoSeleccion } from "../Xpath/TipoSeleccion"
 
 export class EtiquetaDoble implements Etiqueta  {
     nombreTagAbre:string
@@ -107,16 +102,7 @@ export class EtiquetaDoble implements Etiqueta  {
     getErroresSemanticos():string {
         let texto = ""
         if (this.nombreTagAbre != this.nombreTagCierre) {
-            console.log("error arribaa-----------")
-            /*
-            
-            constructor(simbolo: string, tipo: TipoSeleccion, linea: any, columna: any, entorno: string) {    
-            */
            texto += `Error(Linea: ${this.linea}, Columna: ${this.columna}): El nombre del tag de apertura no es igual al de cierre.\n` 
-           ControlError.Agregar(
-           this.nombreTagAbre,TipoSeleccion.ERROR_SEMANTICO,this.linea,this.columna,this.padre.getName());
-         
-           
         }
         this.listaAtributos.forEach(atributo => {
             let apariciones = 0
@@ -125,12 +111,7 @@ export class EtiquetaDoble implements Etiqueta  {
                     apariciones += 1
                 }
                 if (apariciones > 1) {
-                    console.log("error abajo")
                     texto += `Error(Linea: ${atributo.linea}, Columna: ${atributo.columna}): El atributo '${atributo.nombre}' se encuentra repetido.\n`
-                    ControlError.Agregar( atributo.nombre,TipoSeleccion.ERROR_SEMANTICO,this.linea,this.columna,this.padre.getName());
-                      
-        
-                  
                     break
                 }
             }

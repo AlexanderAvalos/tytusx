@@ -85,10 +85,6 @@ export class Tabla {
                 }
             }
 
-            if (set.tipo === TipoSeleccion.SELECT_NODOS_FROM_NODO) {
-                
-            }
-
             elemBusqueda = {
                 nombre: "",
                 tipo: "",

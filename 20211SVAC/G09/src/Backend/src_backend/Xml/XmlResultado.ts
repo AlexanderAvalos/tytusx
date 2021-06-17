@@ -11,7 +11,7 @@ export class XmlResultado {
         this.etiquitaInicio = etiquitaInicio
         this.etiquetasCuerpo = etiquetasCuerpo
     }
-    
+
     imprimir():string {
         let texto:string = ""
         this.etiquetasCuerpo.forEach(etiqueta => {
